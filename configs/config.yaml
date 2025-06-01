@@ -1,0 +1,15 @@
+model:
+  path: "data/models/yolo11n.pt"
+  confidence_threshold: 0.5
+video:
+  input_path: "data/input/videos/6660721545122.mp4"
+  output_path: "data/output/processed_videos/output_video.mp4"
+collision:
+  min_iou: 0.1
+tracker:
+  max_distance: 100
+log:
+  path: "logs/collision_log.txt"
+kafka:
+  bootstrap_servers: "host.docker.internal:9092"
+  topic: "video_frames"
