@@ -51,7 +51,7 @@ def run_consumer():
         frame_bytes = bytes.fromhex(message['frame'])
         frame = cv2.imdecode(np.frombuffer(frame_bytes, np.uint8), cv2.IMREAD_COLOR)
         
-        # Phát hiện ô tô
+        # Phát hiện đối tượng
         detections = detector.detect_cars(frame)
         
         # Theo dõi và gán ID

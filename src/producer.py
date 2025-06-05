@@ -26,11 +26,9 @@ def run_producer():
         ret, frame = cap.read()
         if not ret:
             break
-        
         # Chuyển khung hình thành byte array
         _, buffer = cv2.imencode('.jpg', frame)
         frame_bytes = buffer.tobytes()
-        
         # Gửi khung hình qua Kafka
         message = {
             'frame_num': frame_num,
@@ -39,14 +37,12 @@ def run_producer():
         producer.produce(topic, value=json.dumps(message).encode('utf-8'), callback=delivery_report)
         producer.poll(0)
         frame_num += 1
-    
     # Gửi tín hiệu kết thúc
     end_message = {
         'frame_num': -1,
         'frame': 'EOF'
     }
     producer.produce(topic, value=json.dumps(end_message).encode('utf-8'), callback=delivery_report)
-
     producer.flush()
     cap.release()
 

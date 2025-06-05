@@ -2,7 +2,7 @@ import numpy as np
 
 class Tracker:
     def __init__(self, max_distance=100):
-        self.trackers = []  # Lưu danh sách ô tô: {"id": id, "box": [x1, y1, x2, y2]}
+        self.trackers = []  
         self.next_id = 0
         self.max_distance = max_distance
 
